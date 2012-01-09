@@ -1,0 +1,11 @@
+social-api-pilot 프로젝트는 스프링 프레임워크 기반에 SNS 연동을 목적으로 하는 파일럿 프로젝트입니다.
+현재는 OAuth 구현체 중, Scribe 라이브러리를 사용해 트위터의 타임라인/트위팅 기능을 구현했으며, 앞으로
+다른 SNS를 추가하고 spring-social 모듈을 사용할 생각입니다.
+
+트위터 타임라인 보기:
+아래 URL로 접속해 OAuth 인증을 받으면 /twitter/index로 리다이렉트 됩니다.
+http://localhost:8080/social-api-pilot/twitter/oauth
+
+트위팅:
+아래 URL로 접속해 폼에 원하는 텍스트를 적고 버튼을 누르면 인증 받은 계정으로 트윗을 날립니다.
+http://localhost:8080/social-api-pilot/twitter/form
