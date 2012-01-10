@@ -22,11 +22,6 @@ public class OAuthServiceConfigTest {
 	@Autowired OAuthServiceConfig twitterOAuthServiceConfig;
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@Before
-	public void setUp() throws Exception {
-		
-	}
-	
 	@Test
 	public void create() throws Exception {
 		assertThat(twitterOAuthServiceConfig, is(notNullValue()));

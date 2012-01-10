@@ -24,11 +24,7 @@ public class OAuthServiceProviderTest {
 	}
 	
 	@Test
-	public void confirmSingleton() throws Exception {
-		// 다른 객체
-		assertThat(twitterOAuthServiceProvider.getService(), is(not(twitterOAuthServiceProvider.getService())));
-		
-		// 다른 토큰
+	public void everyTokenIsUnique() throws Exception {
 		String token1 = twitterOAuthServiceProvider.getService().getRequestToken().toString();
 		String token2 = twitterOAuthServiceProvider.getService().getRequestToken().toString();
 		
