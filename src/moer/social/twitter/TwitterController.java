@@ -58,7 +58,6 @@ public class TwitterController {
 	
 	@RequestMapping("/oauth")
 	public String startOAuth(Model model) {
-		twitterService.setOAuthService(twitterOAuthServiceProvider.getService());
 		Token requestToken = twitterService.getRequestToken();
 		model.addAttribute("requestToken", requestToken);
 		logger.info("request token: " + requestToken);

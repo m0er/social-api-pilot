@@ -15,6 +15,7 @@ import org.scribe.model.Verifier;
 import org.scribe.oauth.OAuthService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("twitterService")
@@ -23,32 +24,28 @@ public class TwitterService {
 	private static String TWEET_UPDATE_URL = "https://api.twitter.com/1/statuses/update.json";
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	private OAuthService service;
+	@Autowired OAuthService twitterOAuthService;
 	SAXReader reader = new SAXReader();
 	
-	public void setOAuthService(OAuthService service) {
-		this.service = service;
-	}
-	
 	public Token getRequestToken() {
-		return service.getRequestToken();
+		return twitterOAuthService.getRequestToken();
 	}
 	
 	public String requestOAuth(Token requestToken) {
-		String authorizationUrl = service.getAuthorizationUrl(requestToken);
+		String authorizationUrl = twitterOAuthService.getAuthorizationUrl(requestToken);
 		logger.info(authorizationUrl);
 		return authorizationUrl;
 	}
 
 	public Token getAccessToken(Token requestToken, String oauthVerifier) {
 		Verifier verifier = new Verifier(oauthVerifier);
-		Token accessToken = service.getAccessToken(requestToken, verifier);
+		Token accessToken = twitterOAuthService.getAccessToken(requestToken, verifier);
 		return accessToken;
 	}
 
 	public List<Twitter> getTimeline(Token accessToken) {
 		OAuthRequest request = new OAuthRequest(Verb.GET, HOME_TIMELINE_URL);
-		service.signRequest(accessToken, request);
+		twitterOAuthService.signRequest(accessToken, request);
 		Response response = request.send();
 		
 		List<Twitter> twitterList = new ArrayList<Twitter>();
@@ -79,7 +76,7 @@ public class TwitterService {
 	public void tweeting(Twitter twitter, Token accessToken) {
 		OAuthRequest request = new OAuthRequest(Verb.POST, TWEET_UPDATE_URL);
 		request.addBodyParameter("status", twitter.getText());
-		service.signRequest(accessToken, request);
+		twitterOAuthService.signRequest(accessToken, request);
 		request.send();
 	}
 	

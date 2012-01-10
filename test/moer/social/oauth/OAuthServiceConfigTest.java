@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 
 import moer.social.oauth.OAuthServiceConfig;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

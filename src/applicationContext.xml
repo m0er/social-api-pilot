@@ -21,12 +21,11 @@
 		p:apiSecret="#{socialConfig['oauth.twitter.secret']}"
 		p:callback="#{socialConfig['oauth.twitter.callback']}"
 		p:apiClass="org.scribe.builder.api.TwitterApi.Authenticate"/>
-	<!--
-		p:apiClass="org.scribe.builder.api.TwitterApi.Authenticate"
-		-->
 	
 	<bean id="twitterServiceProvider" class="moer.social.oauth.OAuthServiceProvider">
 		<constructor-arg name="config" ref="twitterOAuthServiceConfig"/>
 	</bean>
+	
+	<bean id="twitterOAuthService" factory-bean="twitterServiceProvider" factory-method="getService"/>
 	
 </beans>
