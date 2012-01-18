@@ -23,7 +23,8 @@ public class TwitterTestController {
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@RequestMapping("/index")
-	public String index(HttpSession session, Model model) {
+	public String index(@ModelAttribute("requestToken") Token requestToken, HttpSession session, Model model) {
+		logger.info("index()");
 		model.addAttribute("requestToken", session.getAttribute("requestToken"));
 		model.addAttribute("accessToken", session.getAttribute("accessToken"));
 		return "test/twitter";
@@ -46,6 +47,20 @@ public class TwitterTestController {
 		Token mockAccessToken = new Token(token, secret);
 		twitterService.tweeting(twitter, mockAccessToken);
 		return "redirect:/test/twitter/timeline/" + token + "/" + secret;
+	}
+	
+	@RequestMapping("/verify/{token}/{secret}")
+	public String verifyCredentials(@PathVariable("token") String token, @PathVariable("secret") String secret) {
+		Token mockAccessToken = new Token(token, secret);
+		Response response = twitterService.verifyCredentials(mockAccessToken);
+		logger.info(response.getHeaders().toString());
+		logger.info(response.getBody());
+		
+		if (response.getHeader("Status").contains("Unauthorized")) {
+			return "redirect:/test/twitter/oauth";
+		}
+		
+		return "redirect:/test/twitter/index";
 	}
 	
 	@RequestMapping("/oauth")
