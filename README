@@ -9,3 +9,20 @@ http://localhost:8080/social-api-pilot/twitter/oauth
 트위팅:
 아래 URL로 접속해 폼에 원하는 텍스트를 적고 버튼을 누르면 인증 받은 계정으로 트윗을 날립니다.
 http://localhost:8080/social-api-pilot/twitter/form
+
+access token 테스트:
+	OAuth 인증 시작
+		http://localhost:8080/social-api-pilot/test/twitter/oauth
+	Access Token 출력, 앞이 토큰, 뒤가 시크릿 키
+		http://localhost:8080/social-api-pilot/test/twitter/index
+
+-- 쿠키 및 다 정리한 뒤..
+	
+	타임라인 보기
+		http://localhost:8080/social-api-pilot/test/twitter/timeline/토큰/키
+	트위팅하기
+		http://localhost:8080/social-api-pilot/test/twitter/tweeting/토큰/키
+	access token 사용 가능한지 확인
+		http://localhost:8080/social-api-pilot/test/twitter/verify/토큰/키
+
+위의 URL에 '토큰', '키' 부분은 index 페이지에서 출력된 것을 복사해서 URL을 만들라는 의미입니다.
