@@ -1,0 +1,11 @@
+(v)트위터 OAuth로 인증하기
+(v)타임라인 가져오기
+(v)트위팅 해보기
+
+(v)properties 파일 xml로 변환하기
+
+(v)테스트용 트위터 컨트롤러 및 서비스 작성
+(v)access token의 token, secret 문자열 확인할 수 있게 하기
+(v)문자열로 access token 생성해서 타임라인 가져와보기
+	(v)모든 쿠키 제거
+문자열로 access token 생성해서 트위팅 해보기
