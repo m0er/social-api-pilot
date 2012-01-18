@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Twitting Test Form</title>
+	<title>Twitting Form</title>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.js"></script>
 	<script type="text/javascript" src="<c:url value="/js/charCount.js"/>"></script>
 	<style type="text/css">
