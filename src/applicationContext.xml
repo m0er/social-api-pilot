@@ -14,7 +14,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	<util:properties id="socialConfig" location="classpath:/moer/social/config/social.properties"></util:properties>
+	<util:properties id="socialConfig" location="classpath:/moer/social/config/social-properties.xml"/>
 	
 	<bean id="twitterOAuthServiceConfig" class="moer.social.oauth.OAuthServiceConfig" 
 		p:apiKey="#{socialConfig['oauth.twitter.key']}"

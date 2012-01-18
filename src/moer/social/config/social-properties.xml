@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>social.properties</comment>
+<entry key="oauth.twitter.test.callback">http://local.dev:8080/social-api-pilot/test/twitter/oauth_callback</entry>
+<entry key="oauth.twitter.key">IXw8Box7vGU37vCslSZRbw</entry>
+<entry key="oauth.twitter.secret">pzfkCG5hFoB8qFl5u6iCUx1feUby58eNwwfqjctzMU</entry>
+<entry key="oauth.twitter.callback">http://local.dev:8080/social-api-pilot/twitter/oauth_callback</entry>
+</properties>
