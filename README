@@ -16,7 +16,7 @@ access token 테스트:
 	Access Token 출력, 앞이 토큰, 뒤가 시크릿 키
 		http://localhost:8080/social-api-pilot/test/twitter/index
 
--- 쿠키 및 다 정리한 뒤..
+-- 쿠키 및 세션 정리한 뒤..
 	
 	타임라인 보기
 		http://localhost:8080/social-api-pilot/test/twitter/timeline/토큰/키
