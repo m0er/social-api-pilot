@@ -6,7 +6,7 @@
 	<title>Test for Twitter</title>
 </head>
 <body>
-<p>${requestToken}</p>
-<p>${accessToken}</p>
+<p>Request Token: ${requestToken}</p>
+<p>Access Token: ${accessToken}</p>
 </body>
 </html>
