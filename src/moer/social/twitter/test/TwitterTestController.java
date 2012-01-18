@@ -36,6 +36,18 @@ public class TwitterTestController {
 		return "twitter/main";
 	}
 	
+	@RequestMapping("/tweeting")
+	public String tweeting() {
+		return "test/form";
+	}
+	
+	@RequestMapping("/tweeting/{token}/{secret}")
+	public String tweeting(Twitter twitter, @PathVariable("token") String token, @PathVariable("secret") String secret) {
+		Token mockAccessToken = new Token(token, secret);
+		twitterService.tweeting(twitter, mockAccessToken);
+		return "redirect:/test/twitter/timeline/" + token + "/" + secret;
+	}
+	
 	@RequestMapping("/oauth")
 	public String oauth(Model model) {
 		Token requestToken = twitterTestService.getRequestToken();

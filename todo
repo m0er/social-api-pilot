@@ -8,4 +8,5 @@
 (v)access token의 token, secret 문자열 확인할 수 있게 하기
 (v)문자열로 access token 생성해서 타임라인 가져와보기
 	(v)모든 쿠키 제거
-문자열로 access token 생성해서 트위팅 해보기
+(v)문자열로 access token 생성해서 트위팅 해보기
+	(v)테스트 폼 추가
