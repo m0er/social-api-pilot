@@ -75,4 +75,9 @@ public class TwitterController {
 		return "redirect:/twitter/index";
 	}
 	
+	@RequestMapping("/anywhere")
+	public String anywhere() {
+		return "twitter/anywhere";
+	}
+	
 }
