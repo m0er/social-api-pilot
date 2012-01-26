@@ -31,7 +31,7 @@
 	</script>
 </head>
 <body>
-	<form action="<c:url value="/test/twitter/tweeting/124951420-71iz8T89g2rzIR98FisIzKhIvJjy8piqRF6UOzcH/PurhrWAj66PJGrjU0pOrAGMlc8hbKmpxML05sVzVSQQ"/>" method="post">
+	<form action="<c:url value="/test/twitter/tweeting/${token}/${secret}"/>" method="post">
 		<section>
 			<label for="tweeting">What's happening?</label>
 			<textarea id="tweeting" name="text"></textarea>
