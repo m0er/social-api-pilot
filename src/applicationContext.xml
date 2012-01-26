@@ -16,10 +16,11 @@
 	
 	<util:properties id="socialConfig" location="classpath:/moer/social/config/social-properties.xml"/>
 	
+	<!-- Twitter OAuth Flow -->
 	<bean id="twitterOAuthServiceConfig" class="moer.social.oauth.OAuthServiceConfig" 
 		p:apiKey="#{socialConfig['oauth.twitter.key']}"
 		p:apiSecret="#{socialConfig['oauth.twitter.secret']}"
-		p:callback="#{socialConfig['oauth.twitter.test.callback']}"
+		p:callback="#{socialConfig['oauth.twitter.callback']}"
 		p:apiClass="org.scribe.builder.api.TwitterApi.Authenticate"/>
 	
 	<bean id="twitterServiceProvider" class="moer.social.oauth.OAuthServiceProvider">
@@ -27,5 +28,18 @@
 	</bean>
 	
 	<bean id="twitterOAuthService" factory-bean="twitterServiceProvider" factory-method="getService"/>
+	
+	<!-- Twitter OAuth Test Flow -->
+	<bean id="twitterTestOAuthServiceConfig" class="moer.social.oauth.OAuthServiceConfig" 
+		p:apiKey="#{socialConfig['oauth.twitter.test.key']}"
+		p:apiSecret="#{socialConfig['oauth.twitter.test.secret']}"
+		p:callback="#{socialConfig['oauth.twitter.test.callback']}"
+		p:apiClass="org.scribe.builder.api.TwitterApi.Authenticate"/>
+	
+	<bean id="twitterTestServiceProvider" class="moer.social.oauth.OAuthServiceProvider">
+		<constructor-arg name="config" ref="twitterTestOAuthServiceConfig"/>
+	</bean>
+	
+	<bean id="twitterTestOAuthService" factory-bean="twitterTestServiceProvider" factory-method="getService"/>
 	
 </beans>

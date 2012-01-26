@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 @SessionAttributes({"requestToken", "accessToken"})
 public class TwitterTestController {
 	@Autowired TwitterTestService twitterTestService;
-	@Autowired TwitterService twitterService;
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@RequestMapping("/index")
@@ -33,26 +32,28 @@ public class TwitterTestController {
 	@RequestMapping("/timeline/{token}/{secret}")
 	public String timeline(@PathVariable("token") String token, @PathVariable("secret") String secret, Model model) {
 		Token mockAccessToken = new Token(token, secret);
-		model.addAttribute("result", twitterService.getTimeline(mockAccessToken));
+		model.addAttribute("result", twitterTestService.getTimeline(mockAccessToken));
 		return "twitter/main";
 	}
 	
-	@RequestMapping("/tweeting")
-	public String tweeting() {
+	@RequestMapping("/form/{token}/{secret}")
+	public String tweeting(@PathVariable("token") String token, @PathVariable("secret") String secret, Model model) {
+		model.addAttribute("token", token);
+		model.addAttribute("secret", secret);
 		return "test/form";
 	}
 	
 	@RequestMapping("/tweeting/{token}/{secret}")
 	public String tweeting(Twitter twitter, @PathVariable("token") String token, @PathVariable("secret") String secret) {
 		Token mockAccessToken = new Token(token, secret);
-		twitterService.tweeting(twitter, mockAccessToken);
+		twitterTestService.tweeting(twitter, mockAccessToken);
 		return "redirect:/test/twitter/timeline/" + token + "/" + secret;
 	}
 	
 	@RequestMapping("/verify/{token}/{secret}")
 	public String verifyCredentials(@PathVariable("token") String token, @PathVariable("secret") String secret) {
 		Token mockAccessToken = new Token(token, secret);
-		Response response = twitterService.verifyCredentials(mockAccessToken);
+		Response response = twitterTestService.verifyCredentials(mockAccessToken);
 		logger.info(response.getHeaders().toString());
 		logger.info(response.getBody());
 		
