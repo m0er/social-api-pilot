@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class TwitterService {
 	private static String HOME_TIMELINE_URL = "https://api.twitter.com/1/statuses/home_timeline.xml";
 	private static String TWEET_UPDATE_URL = "https://api.twitter.com/1/statuses/update.json";
-	private static String VIRIFY_CREDENTIALS = "http://api.twitter.com/1/account/verify_credentials.xml";
+	private static String VERIFY_CREDENTIALS = "http://api.twitter.com/1/account/verify_credentials.xml";
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	@Autowired OAuthService twitterOAuthService;
@@ -82,10 +82,9 @@ public class TwitterService {
 	}
 	
 	public Response verifyCredentials(Token accessToken) {
-		OAuthRequest request = new OAuthRequest(Verb.GET, VIRIFY_CREDENTIALS);
+		OAuthRequest request = new OAuthRequest(Verb.GET, VERIFY_CREDENTIALS);
 		twitterOAuthService.signRequest(accessToken, request);
 		return request.send();
 	}
-	
 	
 }

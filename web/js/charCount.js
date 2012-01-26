@@ -15,7 +15,7 @@
  
 (function($) {
 
-	$.fn.charCount = function(options){
+	$.fn.charCount = function(userOptions){
 	  
 		// default configuration properties
 		var defaults = {	
@@ -28,7 +28,7 @@
 			counterText: ''
 		}; 
 			
-		var options = $.extend(defaults, options); 
+		var options = $.extend(defaults, userOptions);
 		
 		function calculate(obj){
 			var count = $(obj).val().length;
@@ -49,8 +49,8 @@
 		this.each(function() {  			
 			$(this).after('<'+ options.counterElement +' class="' + options.css + '">'+ options.counterText +'</'+ options.counterElement +'>');
 			calculate(this);
-			$(this).keyup(function(){calculate(this)});
-			$(this).change(function(){calculate(this)});
+			$(this).keyup(function(){calculate(this);});
+			$(this).change(function(){calculate(this);});
 		});
 	  
 	};

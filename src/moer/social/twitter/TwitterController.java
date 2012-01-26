@@ -1,22 +1,15 @@
 package moer.social.twitter;
 
-import java.util.List;
+import java.util.*;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 
-import moer.social.oauth.OAuthServiceProvider;
-
-import org.scribe.model.Token;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.scribe.model.*;
+import org.slf4j.*;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
+import org.springframework.ui.*;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 참조 사이트: http://java.dzone.com/articles/spring-mvc-and-scribe-simple
@@ -28,7 +21,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes({"requestToken", "accessToken"})
 public class TwitterController {
 	@Autowired TwitterService twitterService;
-	@Autowired OAuthServiceProvider twitterOAuthServiceProvider;
 	Logger logger = LoggerFactory.getLogger(getClass());
 	
 	@RequestMapping("/index")
@@ -78,6 +70,19 @@ public class TwitterController {
 	@RequestMapping("/anywhere")
 	public String anywhere() {
 		return "twitter/anywhere";
+	}
+	
+	@RequestMapping("/verify")
+	public String verifyCredentials(@ModelAttribute("accessToken") Token accessToken) {
+		Response response = twitterService.verifyCredentials(accessToken);
+		logger.info(response.getHeaders().toString());
+		logger.info(response.getBody());
+		
+		if (response.getHeader("Status").contains("Unauthorized")) {
+			return "redirect:/twitter/oauth";
+		}
+		
+		return "redirect:/twitter/index";
 	}
 	
 }
