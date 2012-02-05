@@ -41,7 +41,7 @@
 		<constructor-arg name="config" ref="facebookOAuthServiceConfig"/>
 	</bean>
 	
-	<bean id="facebookOAuthService" factory-bean="facebookServiceProvider" factory-method="getService"/>
+	<bean id="facebookOAuthService" factory-bean="facebookServiceProvider" factory-method="getServiceWithScope"/>
 	
 	<!-- Twitter OAuth Test Flow -->
 	<bean id="twitterTestOAuthServiceConfig" class="moer.social.oauth.OAuthServiceConfig" 

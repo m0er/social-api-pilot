@@ -23,6 +23,15 @@ public class OAuthServiceProvider {
 							.apiKey(config.getApiKey())
 						    .apiSecret(config.getApiSecret())
 						    .callback(config.getCallback())
+						    .build();
+	}
+	
+	public OAuthService getServiceWithScope() {
+		logger.info(config.toString());
+		return new ServiceBuilder().provider(config.getApiClass())
+							.apiKey(config.getApiKey())
+						    .apiSecret(config.getApiSecret())
+						    .callback(config.getCallback())
 						    .scope(config.getScope())
 						    .build();
 	}
