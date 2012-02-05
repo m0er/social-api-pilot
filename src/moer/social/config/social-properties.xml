@@ -11,6 +11,7 @@
 	<entry key="oauth.facebook.key">352710578087994</entry>
 	<entry key="oauth.facebook.secret">256aeacbbd678926607a230712f8d4bd</entry>
 	<entry key="oauth.facebook.callback">http://localhost:8080/social-api-pilot/facebook/oauth_callback</entry>
+	<entry key="oauth.facebook.scope">user_status,publish_stream</entry>
 	
 	<!-- for twitter test -->
 	<entry key="oauth.twitter.test.key">0wcZShPuoWnvN11JPgUg</entry>

@@ -34,7 +34,8 @@
 		p:apiKey="#{socialConfig['oauth.facebook.key']}"
 		p:apiSecret="#{socialConfig['oauth.facebook.secret']}"
 		p:callback="#{socialConfig['oauth.facebook.callback']}"
-		p:apiClass="org.scribe.builder.api.FacebookApi"/>
+		p:apiClass="org.scribe.builder.api.FacebookApi"
+		p:scope="#{socialConfig['oauth.facebook.scope']}"/>
 	
 	<bean id="facebookServiceProvider" class="moer.social.oauth.OAuthServiceProvider">
 		<constructor-arg name="config" ref="facebookOAuthServiceConfig"/>

@@ -8,20 +8,24 @@ public class OAuthServiceConfig {
 	private String apiSecret;
 	private String callback;
 	private Class<? extends Api> apiClass;
+	private String scope;
 	
 	public OAuthServiceConfig() {
 	}
 	
 	public OAuthServiceConfig(String apiKey, String apiSecret, String callback,
             Class<? extends Api> apiClass) {
-	    super();
 	    this.apiKey = apiKey;
 	    this.apiSecret = apiSecret;
 	    this.callback = callback;
 	    this.apiClass = apiClass;
     }
 
-
+	public OAuthServiceConfig(String apiKey, String apiSecret, String callback,
+			Class<? extends Api> apiClass, String scope) {
+		this(apiKey, apiSecret, callback, apiClass);
+		this.scope = scope;
+	}
 
 	/**
      * @return the apiKey
@@ -79,15 +83,20 @@ public class OAuthServiceConfig {
     	this.apiClass = apiClass;
     }
 	
-	/* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-	    return "OAuthServiceConfig [apiKey=" + apiKey + ", apiSecret="
-	            + apiSecret + ", callback=" + callback + ", apiClass="
-	            + apiClass + "]";
-    }
+	public String getScope() {
+		return scope;
+	}
+
+	public void setScope(String scope) {
+		this.scope = scope;
+	}
+
+	@Override
+	public String toString() {
+		return "OAuthServiceConfig [apiKey=" + apiKey + ", apiSecret="
+				+ apiSecret + ", callback=" + callback + ", apiClass="
+				+ apiClass + ", scope=" + scope + "]";
+	}
 	
 	
 }
