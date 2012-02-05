@@ -29,6 +29,19 @@
 	
 	<bean id="twitterOAuthService" factory-bean="twitterServiceProvider" factory-method="getService"/>
 	
+	<!-- Facebook OAuth Flow -->
+	<bean id="facebookOAuthServiceConfig" class="moer.social.oauth.OAuthServiceConfig"
+		p:apiKey="#{socialConfig['oauth.facebook.key']}"
+		p:apiSecret="#{socialConfig['oauth.facebook.secret']}"
+		p:callback="#{socialConfig['oauth.facebook.callback']}"
+		p:apiClass="org.scribe.builder.api.FacebookApi"/>
+	
+	<bean id="facebookServiceProvider" class="moer.social.oauth.OAuthServiceProvider">
+		<constructor-arg name="config" ref="facebookOAuthServiceConfig"/>
+	</bean>
+	
+	<bean id="facebookOAuthService" factory-bean="facebookServiceProvider" factory-method="getService"/>
+	
 	<!-- Twitter OAuth Test Flow -->
 	<bean id="twitterTestOAuthServiceConfig" class="moer.social.oauth.OAuthServiceConfig" 
 		p:apiKey="#{socialConfig['oauth.twitter.test.key']}"
