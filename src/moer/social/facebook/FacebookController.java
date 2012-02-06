@@ -16,10 +16,10 @@ public class FacebookController {
 	
 	@RequestMapping("/index")
 	public String index(@ModelAttribute("accessToken") Token accessToken, Model model) {
-		String statuses = facebookService.statuses(accessToken);
-		logger.info(statuses);
-		model.addAttribute("statuses", statuses);
-		return "main";
+		Facebook facebook = facebookService.getStatus(accessToken);
+		logger.info("facebook statuses: " + facebook.toString());
+		model.addAttribute("statusList", facebook.getData());
+		return "facebook/main";
 	}
 	
 	@RequestMapping("/oauth")

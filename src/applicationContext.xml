@@ -16,6 +16,9 @@
 	
 	<util:properties id="socialConfig" location="classpath:/moer/social/config/social-properties.xml"/>
 	
+	<!-- Gson -->
+	<bean id="gson" class="com.google.gson.Gson"/>
+	
 	<!-- Twitter OAuth Flow -->
 	<bean id="twitterOAuthServiceConfig" class="moer.social.oauth.OAuthServiceConfig" 
 		p:apiKey="#{socialConfig['oauth.twitter.key']}"
