@@ -15,6 +15,13 @@
 	</properties>
 	
 	<dependencies>
+		<!-- Gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.1</version>
+		</dependency>
+
 		<!-- Jaxen, XPath -->
 		<dependency>
 			<groupId>jaxen</groupId>
