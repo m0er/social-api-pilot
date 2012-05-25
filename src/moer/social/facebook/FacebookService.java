@@ -11,7 +11,10 @@ import com.google.gson.*;
 @Service("facebookService")
 public class FacebookService {
 	private static String STATUSES = "https://graph.facebook.com/me/statuses";
+	private static String CREATE_LINK = "https://graph.facebook.com/me/feed";
+	
 	private Logger logger = LoggerFactory.getLogger(getClass());
+	
 	@Autowired private OAuthService facebookOAuthService;
 	@Autowired private Gson gson;
 	
@@ -31,5 +34,15 @@ public class FacebookService {
 		logger.info("response: " + responseBody);
 		
 		return gson.fromJson(responseBody, Facebook.class);
+	}
+
+	public void statusUpdate(Facebook facebook, Token accessToken) {
+		OAuthRequest request = new OAuthRequest(Verb.POST, CREATE_LINK);
+		request.addBodyParameter("link", facebook.getLink());
+		request.addBodyParameter("message", facebook.getMessage());
+		facebookOAuthService.signRequest(accessToken, request);
+		Response response = request.send();
+		String responseBody = response.getBody();
+		logger.info("response: " + responseBody);
 	}
 }

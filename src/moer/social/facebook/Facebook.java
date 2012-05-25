@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Facebook {
 	List<Status> data;
+	String message;
+	String link;
 
 	public List<Status> getData() {
 		return data;
@@ -13,9 +15,26 @@ public class Facebook {
 		this.data = data;
 	}
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public String getLink() {
+		return link;
+	}
+
+	public void setLink(String link) {
+		this.link = link;
+	}
+
 	@Override
 	public String toString() {
-		return "Facebook [data=" + data + "]";
+		return "Facebook [data=" + data + ", message=" + message + ", link="
+				+ link + "]";
 	}
 	
 	public static class Status {

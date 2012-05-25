@@ -22,6 +22,18 @@ public class FacebookController {
 		return "facebook/main";
 	}
 	
+	@RequestMapping(value="/form", method=RequestMethod.GET)
+	public String form() {
+		return "facebook/form";
+	}
+	
+	@RequestMapping(value="/form", method=RequestMethod.POST)
+	public String statusUpdate(Facebook facebook, @ModelAttribute("accessToken") Token accessToken) {
+		logger.info(facebook.toString());
+		facebookService.statusUpdate(facebook, accessToken);
+		return "redirect:/facebook/index";
+	}
+	
 	@RequestMapping("/oauth")
 	public String startOAuth() {
 		return "redirect:" + facebookService.getAuthorizationUrl();

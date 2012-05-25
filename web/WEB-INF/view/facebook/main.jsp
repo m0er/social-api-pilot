@@ -7,6 +7,7 @@
 	<title>Facebook API Test with Scribe</title>
 </head>
 <body>
+	<h1>accesstoken: ${sessionScope.accessToken}</h1>
 	<c:forEach items="${statusList}" var="status">
 		<section>
 			<header>${status.id}</header>
