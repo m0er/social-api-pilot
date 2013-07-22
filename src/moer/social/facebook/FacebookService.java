@@ -12,6 +12,7 @@ import com.google.gson.*;
 public class FacebookService {
 	private static String STATUSES = "https://graph.facebook.com/me/statuses";
 	private static String CREATE_LINK = "https://graph.facebook.com/me/feed";
+	private static String ME = "https://graph.facebook.com/me";
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -24,6 +25,16 @@ public class FacebookService {
 
 	public Token getAccessToken(Verifier verifier) {
 		return facebookOAuthService.getAccessToken(null, verifier);
+	}
+	
+	public void me(Token accessToken) {
+		OAuthRequest request = new OAuthRequest(Verb.GET, ME);
+		facebookOAuthService.signRequest(accessToken, request);
+		Response response = request.send();
+		
+		logger.info("Code: " + response.getCode());
+		logger.info("Body: " + response.getBody());
+		
 	}
 	
 	public Facebook getStatus(Token accessToken) {

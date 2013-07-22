@@ -16,6 +16,7 @@ public class FacebookController {
 	
 	@RequestMapping("/index")
 	public String index(@ModelAttribute("accessToken") Token accessToken, Model model) {
+		facebookService.me(accessToken);
 		Facebook facebook = facebookService.getStatus(accessToken);
 		logger.info("facebook statuses: " + facebook.toString());
 		model.addAttribute("statusList", facebook.getData());
